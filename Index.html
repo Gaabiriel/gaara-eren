@@ -231,6 +231,26 @@ img{display:block;max-width:100%}
 .add-row-lbl{font-size:12px;font-weight:700;color:var(--gaara)}
 
 /* ── TOAST ── */
+/* Setup Banner */
+.setup-banner{
+  display:none;position:fixed;top:0;left:0;right:0;z-index:500;
+  background:linear-gradient(135deg,#e8a838,#d4901a);
+  padding:14px 18px;gap:12px;align-items:flex-start;
+  max-width:480px;margin:0 auto;box-shadow:0 4px 20px rgba(0,0,0,.2);
+}
+.sb-ico{font-size:22px;flex-shrink:0}
+.sb-content{flex:1}
+.sb-title{font-size:13px;font-weight:800;color:#fff;margin-bottom:3px}
+.sb-text{font-size:12px;color:rgba(255,255,255,.9);line-height:1.55}
+.sb-close{background:rgba(255,255,255,.25);border:none;border-radius:7px;padding:6px 12px;font-size:12px;font-weight:800;color:#fff;cursor:pointer;font-family:inherit;flex-shrink:0;margin-top:2px}
+/* Sync badge */
+.sync-badge{
+  position:fixed;bottom:70px;right:12px;z-index:90;
+  background:rgba(44,110,73,.9);color:#fff;
+  padding:5px 12px;border-radius:100px;font-size:10px;font-weight:700;
+  opacity:0.5;transition:opacity .5s;pointer-events:none;
+  max-width:480px;
+}
 .toast{position:fixed;top:12px;left:50%;transform:translateX(-50%) translateY(-60px);background:var(--ink);color:var(--bg);padding:9px 20px;border-radius:100px;font-size:13px;font-weight:700;z-index:400;opacity:0;transition:all .28s cubic-bezier(.23,1,.32,1);white-space:nowrap;pointer-events:none;max-width:92vw;text-align:center}
 .toast.show{transform:translateX(-50%) translateY(0);opacity:1}
 
@@ -248,6 +268,9 @@ img{display:block;max-width:100%}
 .wrap>*{animation:fadeUp .25s ease both}
 .profiles{animation-delay:.05s}
 </style>
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
 </head>
 <body>
 
@@ -433,6 +456,16 @@ img{display:block;max-width:100%}
 </div>
 
 <div class="wrap" id="app">
+
+  <!-- SETUP BANNER (aparece se Firebase não configurado) -->
+  <div class="setup-banner" id="setup-banner">
+    <div class="sb-ico">⚙️</div>
+    <div class="sb-content">
+      <div class="sb-title">Configure o Firebase para sincronizar</div>
+      <div class="sb-text">Abra o arquivo HTML num editor de texto, procure por <strong>FB_CONFIG</strong> e cole as chaves do seu projeto Firebase. Veja o guia no rodapé da página.</div>
+    </div>
+    <button class="sb-close" onclick="document.getElementById('setup-banner').style.display='none'">✕</button>
+  </div>
 
   <!-- HERO -->
   <div class="hero">
@@ -701,6 +734,7 @@ img{display:block;max-width:100%}
   </div>
 
   <!-- FOOTER -->
+  <div class="sync-badge" id="sync-badge">sincronizando...</div>
   <div class="sticky-footer">
     <div class="sf-info">
       <div class="sf-title">Gaara & Eren 🐾</div>
@@ -710,23 +744,140 @@ img{display:block;max-width:100%}
     <button class="sf-btn" onclick="window.print()">🖨️ Imprimir</button>
   </div>
 
+  <!-- GUIA DE CONFIGURAÇÃO -->
+  <div id="setup-guide" style="margin:16px 12px 0;border-radius:14px;background:#1a1a2e;border:1px solid #2a2a4a;overflow:hidden">
+    <div style="padding:14px 16px;border-bottom:1px solid #2a2a4a;display:flex;align-items:center;gap:10px">
+      <span style="font-size:20px">🔥</span>
+      <div>
+        <div style="font-size:13px;font-weight:800;color:#fff">Firebase conectado ✅</div>
+        <div style="font-size:11px;color:rgba(255,255,255,.4)">Sincronização em tempo real ativa</div>
+      </div>
+    </div>
+    <div style="padding:14px 16px">
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <div style="display:flex;gap:10px;align-items:flex-start">
+          <div style="width:24px;height:24px;border-radius:50%;background:#e8a838;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:900;color:#fff;flex-shrink:0">1</div>
+          <div style="font-size:12px;color:rgba(255,255,255,.8);line-height:1.6">Acesse <strong style="color:#e8a838">console.firebase.google.com</strong> e faça login com sua conta Google</div>
+        </div>
+        <div style="display:flex;gap:10px;align-items:flex-start">
+          <div style="width:24px;height:24px;border-radius:50%;background:#e8a838;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:900;color:#fff;flex-shrink:0">2</div>
+          <div style="font-size:12px;color:rgba(255,255,255,.8);line-height:1.6">Clique em <strong style="color:#fff">Criar projeto</strong> → nome: <em style="color:#e8a838">gaara-eren</em> → desativar Google Analytics → Criar</div>
+        </div>
+        <div style="display:flex;gap:10px;align-items:flex-start">
+          <div style="width:24px;height:24px;border-radius:50%;background:#e8a838;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:900;color:#fff;flex-shrink:0">3</div>
+          <div style="font-size:12px;color:rgba(255,255,255,.8);line-height:1.6">No menu lateral: <strong style="color:#fff">Criação → Realtime Database</strong> → Criar banco de dados → Modo de teste → Criar</div>
+        </div>
+        <div style="display:flex;gap:10px;align-items:flex-start">
+          <div style="width:24px;height:24px;border-radius:50%;background:#e8a838;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:900;color:#fff;flex-shrink:0">4</div>
+          <div style="font-size:12px;color:rgba(255,255,255,.8);line-height:1.6">Vá em <strong style="color:#fff">Visão geral do projeto ⚙️ → Configurações → Seus aplicativos</strong> → clique no ícone Web <strong style="color:#e8a838">&lt;/&gt;</strong> → registre o app → copie o objeto <em style="color:#e8a838">firebaseConfig</em></div>
+        </div>
+        <div style="display:flex;gap:10px;align-items:flex-start">
+          <div style="width:24px;height:24px;border-radius:50%;background:#e8a838;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:900;color:#fff;flex-shrink:0">5</div>
+          <div style="font-size:12px;color:rgba(255,255,255,.8);line-height:1.6">Abra este arquivo HTML em qualquer editor de texto (Bloco de Notas, VS Code) → procure por <em style="color:#e8a838">FB_CONFIG</em> → substitua cada <em style="color:#f88">COLE_AQUI_xxx</em> pelo valor correspondente do seu firebaseConfig</div>
+        </div>
+        <div style="display:flex;gap:10px;align-items:flex-start">
+          <div style="width:24px;height:24px;border-radius:50%;background:#e8a838;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:900;color:#fff;flex-shrink:0">6</div>
+          <div style="font-size:12px;color:rgba(255,255,255,.8);line-height:1.6">Salve o HTML e publique no GitHub Pages (ou Netlify Drop). Mande o link pro seu sogro. Pronto — qualquer edição que você fizer aparece na hora no celular dele! ✅</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </div>
 
 <script>
 // ═══════════════════════════════════════════
-// STORAGE
+// FIREBASE CONFIG
 // ═══════════════════════════════════════════
-// Storage: usa localStorage (funciona em qualquer browser quando publicado)
-// Fallback em memória caso localStorage não esteja disponível
-let _mem = {};
-function sGet(k){
-  try{ return Promise.resolve(localStorage.getItem(k)); }
-  catch(e){ return Promise.resolve(_mem[k]||null); }
+// INSTRUÇÕES: Substitua os valores abaixo com os do seu projeto Firebase
+// Veja o passo a passo no final do app
+const FB_CONFIG = {
+  apiKey:            "AIzaSyCkIgjOFq4TLdJs2gMfEUA207_C9WAiMRY",
+  authDomain:        "gaara-eren.firebaseapp.com",
+  databaseURL:       "https://gaara-eren-default-rtdb.firebaseio.com",
+  projectId:         "gaara-eren",
+  storageBucket:     "gaara-eren.firebasestorage.app",
+  messagingSenderId: "112867006246",
+  appId:             "1:112867006246:web:613617cb26e56c2162d3e7"
+};
+
+const FB_KEY = 'gaara_eren_v1'; // chave raiz no banco
+let   _db    = null;            // referência ao Firebase DB
+let   _mem   = {};              // fallback se Firebase não configurado
+
+function fbReady() {
+  return _db !== null;
 }
-function sSet(k,v){
-  try{ localStorage.setItem(k,v); }
-  catch(e){ _mem[k]=v; }
-  return Promise.resolve();
+
+async function sGet(k) {
+  if (!fbReady()) {
+    return Promise.resolve(_mem[k] || null);
+  }
+  return new Promise(function(resolve) {
+    _db.ref(FB_KEY + '/' + k).once('value', function(snap) {
+      resolve(snap.val());
+    }, function() {
+      resolve(_mem[k] || null);
+    });
+  });
+}
+
+async function sSet(k, v) {
+  _mem[k] = v;
+  if (!fbReady()) return Promise.resolve();
+  return _db.ref(FB_KEY + '/' + k).set(v);
+}
+
+// Escuta mudanças em tempo real — qualquer dispositivo vê as atualizações
+function listenChanges() {
+  if (!fbReady()) return;
+  _db.ref(FB_KEY + '/petcare').on('value', function(snap) {
+    var val = snap.val();
+    if (!val) return;
+    try {
+      var parsed = JSON.parse(val);
+      D.trip     = parsed.trip     || D.trip;
+      D.meds     = parsed.meds     || D.meds;
+      D.checks   = parsed.checks   || D.checks;
+      D.vet      = parsed.vet      || D.vet;
+      D.food     = parsed.food     || D.food;
+      D.schedule = parsed.schedule || D.schedule;
+      D.care     = parsed.care     || D.care;
+      D.rules    = parsed.rules    || D.rules;
+      renderAll();
+      showSyncBadge();
+    } catch(e) {}
+  });
+}
+
+function showSyncBadge() {
+  var badge = document.getElementById('sync-badge');
+  if (!badge) return;
+  badge.textContent = '✓ Sincronizado ' + new Date().toLocaleTimeString('pt-BR', {hour:'2-digit',minute:'2-digit'});
+  badge.style.opacity = '1';
+  setTimeout(function(){ badge.style.opacity = '0.5'; }, 3000);
+}
+
+function initFirebase() {
+  if (!FB_CONFIG.apiKey || FB_CONFIG.apiKey === 'COLE_AQUI_apiKey') {
+    showSetupBanner();
+    return false;
+  }
+  try {
+    if (!firebase.apps.length) {
+      firebase.initializeApp(FB_CONFIG);
+    }
+    _db = firebase.database();
+    return true;
+  } catch(e) {
+    console.warn('Firebase init failed:', e);
+    return false;
+  }
+}
+
+function showSetupBanner() {
+  var el = document.getElementById('setup-banner');
+  if (el) el.style.display = 'flex';
 }
 
 // ═══════════════════════════════════════════
@@ -1208,6 +1359,7 @@ function addRuleItem() {
 }
 
 window.onload = async function() {
+  var fbOk = initFirebase();
   try {
     var saved = await sGet('petcare');
     if (saved) {
@@ -1223,6 +1375,7 @@ window.onload = async function() {
     }
   } catch(e) {}
   renderAll();
+  if (fbOk) listenChanges();
 };
 </script>
 </body>
