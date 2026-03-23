@@ -1,0 +1,1229 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<title>Gaara & Eren — Manual do Cuidador</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,600;0,700;0,900;1,500;1,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+:root{
+  --bg:#FDFAF6;--white:#fff;--cream:#F5EFE4;--cream2:#EDE4D5;--cream3:#E0D4C0;
+  --ink:#1C1108;--ink2:#3C2A18;--muted:#7A6550;--muted2:#B09A82;
+  --gaara:#C4622D;--gaara2:#a84f22;--gaara-lt:#FEF1EB;--gaara-md:#F5C0A0;
+  --eren:#3B6FA0;--eren2:#2f5982;--eren-lt:#EBF2FA;--eren-md:#A8C8EE;
+  --green:#2C6E49;--green-lt:#E8F5EE;--green-md:#9CCAB4;
+  --red:#B83232;--red-lt:#FDECEA;
+  --amber:#B86A10;--amber-lt:#FEF3E2;
+  --purple:#6B4EA0;--purple-lt:#F0ECFA;
+  --border:#DDD0BC;--border2:#C5B09A;
+  --r:14px;--r-sm:9px;--r-xs:6px;
+  --shadow:0 1px 3px rgba(28,17,8,.06),0 2px 10px rgba(28,17,8,.04);
+  --shadow-up:0 -4px 20px rgba(28,17,8,.08);
+}
+html{scroll-behavior:smooth}
+body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--bg);color:var(--ink);font-size:14px;line-height:1.55;overflow-x:hidden}
+button,input,select,textarea{font-family:inherit}
+::-webkit-scrollbar{width:3px}::-webkit-scrollbar-thumb{background:var(--cream3);border-radius:2px}
+img{display:block;max-width:100%}
+
+.wrap{max-width:480px;margin:0 auto;padding-bottom:40px}
+
+/* ── HERO ── */
+.hero{
+  background:var(--ink);padding:28px 22px 24px;
+  position:relative;overflow:hidden;
+}
+.hero-orb1{position:absolute;width:180px;height:180px;border-radius:50%;background:rgba(196,98,45,.12);right:-50px;top:-50px;pointer-events:none}
+.hero-orb2{position:absolute;width:120px;height:120px;border-radius:50%;background:rgba(59,111,160,.1);left:-30px;bottom:-30px;pointer-events:none}
+.hero-top{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:16px;position:relative;z-index:1}
+.hero-title{font-family:'Fraunces',serif;font-size:clamp(24px,6.5vw,34px);font-weight:900;color:#fff;letter-spacing:-.03em;line-height:1.05}
+.hero-title em{font-style:italic;color:var(--gaara-md)}
+.hero-sub{font-size:12px;color:rgba(255,255,255,.5);margin-top:5px;font-weight:500;line-height:1.5}
+.hero-paws{font-size:38px;line-height:1;flex-shrink:0;position:relative;z-index:1}
+.hero-trip{
+  background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);
+  border-radius:10px;padding:10px 14px;display:flex;align-items:center;gap:10px;
+  position:relative;z-index:1;cursor:pointer;transition:background .14s;
+}
+.hero-trip:hover{background:rgba(255,255,255,.11)}
+.ht-icon{font-size:18px;flex-shrink:0}
+.ht-label{font-size:11px;color:rgba(255,255,255,.5);font-weight:600;text-transform:uppercase;letter-spacing:.07em;margin-bottom:2px}
+.ht-val{font-size:13px;font-weight:700;color:#fff}
+.ht-edit{margin-left:auto;font-size:10px;color:rgba(255,255,255,.35);font-weight:600;border:1px solid rgba(255,255,255,.15);border-radius:5px;padding:3px 7px;background:none;cursor:pointer;font-family:inherit;transition:all .14s}
+.ht-edit:hover{color:rgba(255,255,255,.7);border-color:rgba(255,255,255,.3)}
+
+/* ── PET PROFILE CARDS ── */
+.profiles{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:16px 16px 0}
+.profile-card{
+  background:var(--white);border-radius:var(--r);border:1px solid var(--border);
+  overflow:hidden;box-shadow:var(--shadow);
+  cursor:pointer;transition:transform .15s,box-shadow .15s;
+}
+.profile-card:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(28,17,8,.1)}
+.pc-photo{height:108px;display:flex;align-items:center;justify-content:center;font-size:50px;position:relative}
+.pc-photo.gaara{background:linear-gradient(160deg,#1a1a1a,#2d2d2d)}
+.pc-photo.eren{background:linear-gradient(160deg,#fff8f0,#f5f5f5)}
+.pc-bar{height:3px}
+.pc-bar.gaara{background:linear-gradient(90deg,#111,#333)}
+.pc-bar.eren{background:linear-gradient(90deg,#e0d8c8,#c8bca8)}
+.pc-info{padding:10px 12px 12px}
+.pc-name{font-family:'Fraunces',serif;font-size:18px;font-weight:900;letter-spacing:-.02em}
+.pc-name.gaara{color:var(--gaara)}.pc-name.eren{color:var(--eren)}
+.pc-detail{font-size:10px;font-weight:700;color:var(--muted2);text-transform:uppercase;letter-spacing:.07em;margin-top:2px}
+
+/* ── SECTIONS ── */
+.sec-label{font-size:10px;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;padding:18px 16px 8px;display:flex;align-items:center;gap:8px}
+.sec-label::after{content:'';flex:1;height:1px;background:var(--cream3)}
+
+.card{background:var(--white);border:1px solid var(--border);border-radius:var(--r);margin:0 12px 12px;box-shadow:var(--shadow);overflow:hidden}
+.card-head{padding:13px 15px;border-bottom:1px solid var(--cream2);display:flex;align-items:center;gap:10px;background:linear-gradient(135deg,var(--cream),var(--white))}
+.ch-icon{font-size:20px;flex-shrink:0}
+.ch-title{font-size:13px;font-weight:800;color:var(--ink);letter-spacing:-.01em}
+.ch-sub{font-size:11px;color:var(--muted);margin-top:1px}
+.ch-right{margin-left:auto;flex-shrink:0}
+.card-body{padding:14px 15px}
+
+/* ── FOOD BLOCKS ── */
+.food-block{border-radius:10px;padding:13px;margin-bottom:10px;border:1.5px solid}
+.food-block.gaara{background:var(--gaara-lt);border-color:rgba(196,98,45,.2)}
+.food-block.eren{background:var(--eren-lt);border-color:rgba(59,111,160,.18)}
+.fb-name{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.07em;margin-bottom:9px;display:flex;align-items:center;gap:6px}
+.fb-name.gaara{color:var(--gaara)}.fb-name.eren{color:var(--eren)}
+.fb-row{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;padding:5px 0;border-bottom:1px solid rgba(0,0,0,.05)}
+.fb-row:last-child{border-bottom:none;padding-bottom:0}
+.fb-lbl{font-size:11px;color:var(--muted);font-weight:600;flex-shrink:0}
+.fb-val{font-size:13px;font-weight:700;color:var(--ink);text-align:right}
+
+/* ── SCHEDULE ── */
+.sched-row{display:flex;align-items:flex-start;gap:12px;padding:11px 0;border-bottom:1px solid var(--cream2)}
+.sched-row:last-child{border-bottom:none}
+.sched-time{
+  background:var(--cream);border:1px solid var(--cream3);border-radius:8px;
+  padding:5px 8px;font-size:12px;font-weight:800;color:var(--ink2);
+  flex-shrink:0;min-width:52px;text-align:center;line-height:1.2;
+}
+.sched-body{flex:1}
+.sched-title{font-size:13px;font-weight:700;color:var(--ink)}
+.sched-note{font-size:11px;color:var(--muted);margin-top:3px;line-height:1.5}
+.sched-tags{display:flex;gap:4px;flex-wrap:wrap;margin-top:5px}
+.tag{font-size:9px;font-weight:800;padding:2px 8px;border-radius:100px;text-transform:uppercase;letter-spacing:.05em}
+.tag-gaara{background:var(--gaara-lt);color:var(--gaara)}
+.tag-eren{background:var(--eren-lt);color:var(--eren)}
+.tag-both{background:var(--cream2);color:var(--muted)}
+
+/* ── ALERT ── */
+.alert{border-radius:10px;padding:12px 13px;margin-bottom:9px;display:flex;gap:10px;align-items:flex-start;border:1px solid}
+.alert.warn{background:var(--amber-lt);border-color:rgba(184,106,16,.18)}
+.alert.danger{background:var(--red-lt);border-color:rgba(184,50,50,.18)}
+.alert.info{background:var(--eren-lt);border-color:rgba(59,111,160,.15)}
+.alert.ok{background:var(--green-lt);border-color:rgba(44,110,73,.15)}
+.alert-ico{font-size:19px;flex-shrink:0;line-height:1.2}
+.alert-title{font-size:13px;font-weight:800;color:var(--ink);margin-bottom:3px}
+.alert-body{font-size:12px;color:var(--ink2);line-height:1.65}
+
+/* ── CARE ITEMS ── */
+.care-item{display:flex;align-items:flex-start;gap:11px;padding:11px 0;border-bottom:1px solid var(--cream2)}
+.care-item:last-child{border-bottom:none}
+.care-ico-wrap{width:36px;height:36px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.ciw-gaara{background:var(--gaara-lt)}
+.ciw-eren{background:var(--eren-lt)}
+.ciw-both{background:var(--cream2)}
+.care-content{flex:1}
+.care-title{font-size:13px;font-weight:700;color:var(--ink);margin-bottom:3px}
+.care-desc{font-size:12px;color:var(--muted);line-height:1.6}
+.care-priority{font-size:9px;font-weight:800;padding:2px 7px;border-radius:100px;margin-left:auto;flex-shrink:0;align-self:flex-start;margin-top:2px}
+.cp-high{background:var(--red-lt);color:var(--red)}
+.cp-med{background:var(--amber-lt);color:var(--amber)}
+.cp-low{background:var(--green-lt);color:var(--green)}
+
+/* ── RULES ── */
+.rule-row{display:flex;align-items:flex-start;gap:10px;padding:10px 0;border-bottom:1px solid var(--cream2)}
+.rule-row:last-child{border-bottom:none}
+.rule-num{width:24px;height:24px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:900;flex-shrink:0;margin-top:1px}
+.rn-red{background:var(--red-lt);color:var(--red)}
+.rn-amber{background:var(--amber-lt);color:var(--amber)}
+.rn-green{background:var(--green-lt);color:var(--green)}
+.rule-text{font-size:12px;color:var(--ink2);line-height:1.6}
+.rule-text b{color:var(--ink);font-weight:800}
+
+/* ── MEDICINE ── */
+.med-card{background:var(--purple-lt);border:1px solid rgba(107,78,160,.15);border-radius:10px;padding:13px;margin-bottom:9px}
+.med-head{display:flex;align-items:center;gap:8px;margin-bottom:10px}
+.med-pet-name{font-size:13px;font-weight:800;color:var(--purple)}
+.med-badge{font-size:10px;font-weight:800;background:var(--purple);color:#fff;padding:2px 9px;border-radius:100px;margin-left:auto}
+.med-del{background:none;border:none;color:var(--muted2);cursor:pointer;font-size:18px;line-height:1;padding:0 2px;margin-left:4px}
+.med-row{display:flex;justify-content:space-between;gap:10px;padding:5px 0;border-bottom:1px solid rgba(107,78,160,.08)}
+.med-row:last-child{border-bottom:none;padding-bottom:0}
+.med-lbl{font-size:11px;color:var(--muted);font-weight:600}
+.med-val{font-size:13px;font-weight:700;color:var(--ink);text-align:right}
+.no-meds{text-align:center;padding:16px 0;color:var(--muted2);font-size:13px;font-style:italic}
+
+/* ── EMERGENCY ── */
+.contact-card{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:13px 14px;margin-bottom:9px;display:flex;align-items:flex-start;gap:12px;box-shadow:var(--shadow)}
+.cc-ico{font-size:28px;flex-shrink:0;line-height:1}
+.cc-name{font-size:14px;font-weight:800;color:var(--ink);margin-bottom:3px}
+.cc-detail{font-size:12px;color:var(--muted);line-height:1.6}
+.cc-call{margin-left:auto;flex-shrink:0;background:var(--green);color:#fff;border:none;border-radius:8px;padding:8px 13px;font-size:12px;font-weight:800;cursor:pointer;font-family:inherit;transition:background .14s;display:flex;align-items:center;gap:4px}
+.cc-call:active{background:var(--green2)}
+.cc-call.wpp{background:var(--eren)}
+
+/* ── CHECKLIST ── */
+.chk-row{display:flex;align-items:center;gap:11px;padding:11px 0;border-bottom:1px solid var(--cream2);cursor:pointer;transition:background .1s;border-radius:6px;margin:0 -4px;padding-left:4px;padding-right:4px}
+.chk-row:last-child{border-bottom:none}
+.chk-row:active{background:var(--cream)}
+.chk-box{width:22px;height:22px;border-radius:6px;border:2px solid var(--border2);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .15s}
+.chk-row.on .chk-box{background:var(--green);border-color:var(--green)}
+.chk-tick{font-size:11px;color:#fff;font-weight:900;display:none}
+.chk-row.on .chk-tick{display:block}
+.chk-text{font-size:13px;font-weight:600;color:var(--ink);transition:color .15s;flex:1;line-height:1.4}
+.chk-row.on .chk-text{text-decoration:line-through;color:var(--muted2)}
+.chk-who{font-size:9px;font-weight:800;padding:2px 7px;border-radius:100px;flex-shrink:0}
+
+/* ── MODAL ── */
+.modal-bg{position:fixed;inset:0;background:rgba(28,17,8,.45);z-index:200;display:flex;align-items:flex-end;justify-content:center;opacity:0;pointer-events:none;transition:opacity .2s;backdrop-filter:blur(3px);max-width:480px;margin:0 auto}
+.modal-bg.open{opacity:1;pointer-events:all}
+.modal{background:var(--white);border-radius:18px 18px 0 0;padding:20px 18px 40px;width:100%;transform:translateY(100%);transition:transform .3s cubic-bezier(.23,1,.32,1);max-height:90vh;overflow-y:auto}
+.modal-bg.open .modal{transform:translateY(0)}
+.mh{width:32px;height:4px;background:var(--cream3);border-radius:2px;margin:0 auto 16px}
+.mt{font-family:'Fraunces',serif;font-size:18px;font-weight:700;color:var(--ink);margin-bottom:5px}
+.msub{font-size:12px;color:var(--muted);margin-bottom:16px}
+.fg{margin-bottom:12px}
+.fl{display:block;font-size:10px;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px}
+.fi,.fs{width:100%;background:var(--cream);border:1.5px solid var(--border2);border-radius:var(--r-sm);padding:9px 11px;font-size:14px;color:var(--ink);outline:none;transition:border-color .14s;-webkit-appearance:none}
+.fi:focus,.fs:focus{border-color:var(--gaara);background:var(--white)}
+.fs option{background:var(--white)}
+.fr2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.btn-row{display:flex;gap:8px;margin-top:8px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:11px 18px;border-radius:var(--r-sm);font-size:13px;font-weight:800;border:none;cursor:pointer;transition:all .14s;font-family:inherit;white-space:nowrap;width:100%}
+.b-primary{background:var(--gaara);color:#fff}
+.b-ghost{background:var(--cream2);color:var(--ink2)}
+
+/* ── STICKY FOOTER ── */
+.sticky-footer{
+  position:sticky;bottom:0;background:var(--white);border-top:1px solid var(--border);
+  padding:10px 16px 16px;display:flex;gap:8px;align-items:center;
+  box-shadow:var(--shadow-up);z-index:50;
+  margin-top:16px;
+}
+.sf-info{flex:1;min-width:0}
+.sf-title{font-size:13px;font-weight:800;color:var(--ink)}
+.sf-sub{font-size:10px;color:var(--muted);margin-top:1px}
+.sf-btn{
+  background:var(--gaara);color:#fff;border:none;border-radius:10px;
+  padding:10px 16px;font-size:12px;font-weight:800;cursor:pointer;
+  font-family:inherit;flex-shrink:0;transition:background .14s;display:flex;align-items:center;gap:6px;
+}
+.sf-btn:hover{background:var(--gaara2)}
+.sf-btn-sec{
+  background:var(--cream2);color:var(--ink2);border:none;border-radius:10px;
+  padding:10px 13px;font-size:20px;cursor:pointer;font-family:inherit;flex-shrink:0;
+}
+
+/* ── ADD BTN ── */
+.edit-section-btn{background:none;border:1px solid var(--border2);border-radius:7px;padding:5px 10px;font-size:11px;font-weight:700;color:var(--muted);cursor:pointer;font-family:inherit;transition:all .14s;white-space:nowrap}
+.edit-section-btn:hover{border-color:var(--gaara);color:var(--gaara);background:var(--gaara-lt)}
+.add-row{display:flex;align-items:center;gap:8px;padding:10px 15px;border-top:1px solid var(--cream2);cursor:pointer;transition:background .12s}
+.add-row:hover{background:var(--cream)}
+.add-row-ico{font-size:13px;color:var(--gaara);font-weight:800}
+.add-row-lbl{font-size:12px;font-weight:700;color:var(--gaara)}
+
+/* ── TOAST ── */
+.toast{position:fixed;top:12px;left:50%;transform:translateX(-50%) translateY(-60px);background:var(--ink);color:var(--bg);padding:9px 20px;border-radius:100px;font-size:13px;font-weight:700;z-index:400;opacity:0;transition:all .28s cubic-bezier(.23,1,.32,1);white-space:nowrap;pointer-events:none;max-width:92vw;text-align:center}
+.toast.show{transform:translateX(-50%) translateY(0);opacity:1}
+
+/* ── PRINT ── */
+@media print{
+  .sticky-footer,.modal-bg,.add-row,.chk-box,.sf-btn,.sf-btn-sec,.ht-edit{display:none!important}
+  .hero{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .card,.profile-card,.food-block,.alert,.med-card,.contact-card{page-break-inside:avoid;break-inside:avoid}
+  body{font-size:12px}.wrap{max-width:100%;padding:0}
+  .sec-label{margin-top:12px}
+}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
+.wrap>*{animation:fadeUp .25s ease both}
+.profiles{animation-delay:.05s}
+</style>
+</head>
+<body>
+
+<div class="toast" id="toast"></div>
+
+<!-- MODAL FOOD -->
+<div class="modal-bg" id="m-food">
+  <div class="modal">
+    <div class="mh"></div>
+    <div class="mt">🍽️ Editar Alimentação</div>
+    <div class="msub">Atualize as informações de ração de cada pet</div>
+    <div style="font-size:12px;font-weight:800;color:var(--gaara);text-transform:uppercase;letter-spacing:.07em;margin-bottom:8px">🐶 Gaara</div>
+    <div class="fg"><label class="fl">Ração</label><input class="fi" id="fg-racao" placeholder="Royal Canin Shih Tzu Adult"></div>
+    <div class="fr2">
+      <div class="fg"><label class="fl">Quantidade</label><input class="fi" id="fg-qtd" placeholder="3 colheres rasas"></div>
+      <div class="fg"><label class="fl">Vezes ao dia</label><input class="fi" id="fg-vezes" placeholder="2× ao dia"></div>
+    </div>
+    <div class="fg"><label class="fl">Observação</label><input class="fi" id="fg-obs" placeholder="Obs especial..."></div>
+    <div style="font-size:12px;font-weight:800;color:var(--eren);text-transform:uppercase;letter-spacing:.07em;margin-bottom:8px;margin-top:4px">🐶 Eren</div>
+    <div class="fg"><label class="fl">Ração</label><input class="fi" id="fe-racao" placeholder="Hills Science Diet"></div>
+    <div class="fr2">
+      <div class="fg"><label class="fl">Quantidade</label><input class="fi" id="fe-qtd" placeholder="2 colheres e meia rasas"></div>
+      <div class="fg"><label class="fl">Vezes ao dia</label><input class="fi" id="fe-vezes" placeholder="2× ao dia"></div>
+    </div>
+    <div class="fg"><label class="fl">Observação</label><input class="fi" id="fe-obs" placeholder="Obs especial..."></div>
+    <div class="btn-row">
+      <button class="btn b-ghost" onclick="closeM('m-food')">Cancelar</button>
+      <button class="btn b-primary" onclick="saveFood()">Salvar</button>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL SCHEDULE -->
+<div class="modal-bg" id="m-schedule">
+  <div class="modal">
+    <div class="mh"></div>
+    <div class="mt">⏰ Editar Horários</div>
+    <div class="msub">Edite ou adicione horários na rotina</div>
+    <div id="schedule-edit-list"></div>
+    <div style="margin-top:10px;padding-top:10px;border-top:1px solid var(--cream2)">
+      <div style="font-size:12px;font-weight:700;color:var(--muted);margin-bottom:8px">Adicionar novo horário</div>
+      <div class="fr2">
+        <div class="fg"><label class="fl">Horário</label><input class="fi" id="ns-time" placeholder="09:30"></div>
+        <div class="fg"><label class="fl">Para quem</label>
+          <select class="fs" id="ns-who">
+            <option value="both">Ambos</option>
+            <option value="gaara">Gaara</option>
+            <option value="eren">Eren</option>
+          </select>
+        </div>
+      </div>
+      <div class="fg"><label class="fl">Título</label><input class="fi" id="ns-title" placeholder="Ex: Banho do Gaara"></div>
+      <div class="fg"><label class="fl">Descrição</label><input class="fi" id="ns-note" placeholder="Detalhes..."></div>
+      <button class="btn b-primary" style="width:100%" onclick="addScheduleItem()">+ Adicionar horário</button>
+    </div>
+    <div class="btn-row" style="margin-top:10px">
+      <button class="btn b-ghost" onclick="closeM('m-schedule')">Fechar</button>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL CARE -->
+<div class="modal-bg" id="m-care">
+  <div class="modal">
+    <div class="mh"></div>
+    <div class="mt">❤️ Editar Cuidados Especiais</div>
+    <div class="msub">Edite ou adicione cuidados para cada pet</div>
+    <div id="care-edit-list"></div>
+    <div style="margin-top:10px;padding-top:10px;border-top:1px solid var(--cream2)">
+      <div style="font-size:12px;font-weight:700;color:var(--muted);margin-bottom:8px">Adicionar novo cuidado</div>
+      <div class="fr2">
+        <div class="fg"><label class="fl">Pet</label>
+          <select class="fs" id="nc-pet">
+            <option value="gaara">Gaara</option>
+            <option value="eren">Eren</option>
+          </select>
+        </div>
+        <div class="fg"><label class="fl">Prioridade</label>
+          <select class="fs" id="nc-priority">
+            <option value="high">Alta</option>
+            <option value="med">Média</option>
+            <option value="low">Info</option>
+          </select>
+        </div>
+      </div>
+      <div class="fg"><label class="fl">Ícone (emoji)</label><input class="fi" id="nc-icon" placeholder="💊" maxlength="2"></div>
+      <div class="fg"><label class="fl">Título</label><input class="fi" id="nc-title" placeholder="Ex: Tomar remédio do coração"></div>
+      <div class="fg"><label class="fl">Descrição</label><input class="fi" id="nc-desc" placeholder="Detalhes do cuidado..."></div>
+      <button class="btn b-primary" style="width:100%" onclick="addCareItem()">+ Adicionar cuidado</button>
+    </div>
+    <div class="btn-row" style="margin-top:10px">
+      <button class="btn b-ghost" onclick="closeM('m-care')">Fechar</button>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL RULES -->
+<div class="modal-bg" id="m-rules">
+  <div class="modal">
+    <div class="mh"></div>
+    <div class="mt">📌 Editar Regras</div>
+    <div class="msub">Edite as regras importantes para o cuidador</div>
+    <div id="rules-edit-list"></div>
+    <div style="margin-top:10px;padding-top:10px;border-top:1px solid var(--cream2)">
+      <div style="font-size:12px;font-weight:700;color:var(--muted);margin-bottom:8px">Adicionar nova regra</div>
+      <div class="fg"><label class="fl">Importância</label>
+        <select class="fs" id="nr-level">
+          <option value="red">🔴 Proibido / Crítico</option>
+          <option value="amber">🟡 Atenção</option>
+          <option value="green">🟢 Informação</option>
+        </select>
+      </div>
+      <div class="fg"><label class="fl">Texto da regra</label><input class="fi" id="nr-text" placeholder="Ex: Não deixar comer comida do chão"></div>
+      <button class="btn b-primary" style="width:100%" onclick="addRuleItem()">+ Adicionar regra</button>
+    </div>
+    <div class="btn-row" style="margin-top:10px">
+      <button class="btn b-ghost" onclick="closeM('m-rules')">Fechar</button>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL ADD REMÉDIO -->
+<div class="modal-bg" id="m-med">
+  <div class="modal">
+    <div class="mh"></div>
+    <div class="mt">💊 Adicionar Remédio</div>
+    <div class="msub">Preencha os dados do medicamento</div>
+    <div class="fg">
+      <label class="fl">Para qual pet</label>
+      <select class="fs" id="med-pet">
+        <option value="gaara">🐶 Gaara</option>
+        <option value="eren">🐶 Eren</option>
+      </select>
+    </div>
+    <div class="fg"><label class="fl">Nome do remédio *</label><input class="fi" id="med-nome" placeholder="Ex: Prednisolona"></div>
+    <div class="fr2">
+      <div class="fg"><label class="fl">Dose / Quantidade</label><input class="fi" id="med-dose" placeholder="Ex: 1 comprimido"></div>
+      <div class="fg"><label class="fl">Horário(s)</label><input class="fi" id="med-hora" placeholder="Ex: 8h e 20h"></div>
+    </div>
+    <div class="fg"><label class="fl">Como administrar</label><input class="fi" id="med-como" placeholder="Ex: Misturar na ração ou esconder no petisco"></div>
+    <div class="fg"><label class="fl">Duração / Até quando</label><input class="fi" id="med-ate" placeholder="Ex: Por 7 dias, até dia 28/03"></div>
+    <div class="fg"><label class="fl">Observação importante</label><input class="fi" id="med-obs" placeholder="Alergia conhecida, cuidados extras..."></div>
+    <div class="btn-row">
+      <button class="btn b-ghost" onclick="closeM('m-med')">Cancelar</button>
+      <button class="btn b-primary" onclick="saveMed()">Salvar remédio</button>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL EDIT VET -->
+<div class="modal-bg" id="m-vet">
+  <div class="modal">
+    <div class="mh"></div>
+    <div class="mt">🏥 Contatos de Emergência</div>
+    <div class="msub">Atualize antes de cada viagem</div>
+    <div class="fg"><label class="fl">Clínica veterinária (nome)</label><input class="fi" id="vet-nome" placeholder="Ex: VetAmigo Santos"></div>
+    <div class="fg"><label class="fl">Endereço</label><input class="fi" id="vet-end" placeholder="Ex: Rua das Flores, 123 — Santos, SP"></div>
+    <div class="fg"><label class="fl">Telefone / WhatsApp</label><input class="fi" id="vet-tel" placeholder="(13) 99999-9999"></div>
+    <div class="fg"><label class="fl">Clínica 24h (emergência)</label><input class="fi" id="vet24-nome" placeholder="Ex: PetUrgência Santos"></div>
+    <div class="fg"><label class="fl">Telefone 24h</label><input class="fi" id="vet24-tel" placeholder="(13) 88888-8888"></div>
+    <div class="fg"><label class="fl">Seu WhatsApp (dos donos)</label><input class="fi" id="dono-tel" placeholder="(11) 99999-9999"></div>
+    <div class="btn-row">
+      <button class="btn b-ghost" onclick="closeM('m-vet')">Cancelar</button>
+      <button class="btn b-primary" onclick="saveVet()">Salvar contatos</button>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL TRIP DATE -->
+<div class="modal-bg" id="m-trip">
+  <div class="modal">
+    <div class="mh"></div>
+    <div class="mt">✈️ Informações da Viagem</div>
+    <div class="msub">Atualize para cada viagem</div>
+    <div class="fg"><label class="fl">Período da viagem</label><input class="fi" id="trip-datas" placeholder="Ex: 22/03 a 30/03 de 2026"></div>
+    <div class="fg"><label class="fl">Destino</label><input class="fi" id="trip-dest" placeholder="Ex: Florianópolis"></div>
+    <div class="fg"><label class="fl">Observação para o cuidador</label><input class="fi" id="trip-obs" placeholder="Ex: Qualquer emergência nos ligue a qualquer hora!"></div>
+    <div class="btn-row">
+      <button class="btn b-ghost" onclick="closeM('m-trip')">Cancelar</button>
+      <button class="btn b-primary" onclick="saveTrip()">Salvar</button>
+    </div>
+  </div>
+</div>
+
+<div class="wrap" id="app">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-orb1"></div>
+    <div class="hero-orb2"></div>
+    <div class="hero-top">
+      <div>
+        <div class="hero-title">Cuidados dos<br><em>Gaara & Eren</em></div>
+        <div class="hero-sub">Manual para o nosso cuidador de confiança 🙏<br>Leia com atenção — qualquer dúvida nos chame!</div>
+      </div>
+      <div class="hero-paws">🐾</div>
+    </div>
+    <div class="hero-trip" onclick="openM('m-trip')">
+      <span class="ht-icon">✈️</span>
+      <div>
+        <div class="ht-label">Viagem</div>
+        <div class="ht-val" id="trip-label">Toque para informar as datas</div>
+      </div>
+      <button class="ht-edit">Editar</button>
+    </div>
+  </div>
+
+  <!-- PERFIS -->
+  <div class="profiles">
+    <div class="profile-card">
+      <div class="pc-photo gaara" style="padding:4px 0 0"><svg width="90" height="100" viewBox="0 0 90 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- corpo fofo branco -->
+  <ellipse cx="45" cy="82" rx="28" ry="18" fill="#f0ede6"/>
+  <!-- pelo super volumoso ao redor do corpo (Shih-tzu é muito fofo) -->
+  <ellipse cx="45" cy="78" rx="30" ry="20" fill="#fafaf8"/>
+  <!-- patinhas da frente -->
+  <ellipse cx="33" cy="94" rx="7" ry="5" fill="#f0ede6"/>
+  <ellipse cx="57" cy="94" rx="7" ry="5" fill="#f0ede6"/>
+  <!-- pelo lateral super volumoso — característica marcante do Gaara -->
+  <path d="M15 60 Q6 70 10 85 Q16 92 26 90 Q20 78 18 65Z" fill="#f5f3ee"/>
+  <path d="M75 60 Q84 70 80 85 Q74 92 64 90 Q70 78 72 65Z" fill="#f5f3ee"/>
+  <!-- pelo extra na lateral ainda mais fofo -->
+  <path d="M13 55 Q2 66 5 80 Q10 88 20 87 Q14 75 14 62Z" fill="#fafaf8"/>
+  <path d="M77 55 Q88 66 85 80 Q80 88 70 87 Q76 75 76 62Z" fill="#fafaf8"/>
+  <!-- cabeça bem redonda e volumosa -->
+  <ellipse cx="45" cy="44" rx="30" ry="28" fill="#fafaf8"/>
+  <!-- pelo extra ao redor da cabeça (fluffy) -->
+  <ellipse cx="45" cy="44" rx="33" ry="30" fill="none" stroke="#f0ede6" stroke-width="6"/>
+  <!-- pelo no topo da cabeça bem volumoso -->
+  <path d="M26 20 Q30 8 45 5 Q60 8 64 20 Q56 14 45 13 Q34 14 26 20Z" fill="#f0ede6"/>
+  <ellipse cx="45" cy="12" rx="12" ry="7" fill="#e8e4da"/>
+  <ellipse cx="45" cy="10" rx="8" ry="5" fill="#f0ede6"/>
+  <!-- mechão de pelo caindo na testa -->
+  <path d="M35 22 Q40 16 45 22 Q50 16 55 22 Q50 18 45 20 Q40 18 35 22Z" fill="#e8e4da"/>
+  <!-- orelhas caindo com muito pelo -->
+  <path d="M16 38 Q8 26 10 14 Q14 6 20 10 Q26 14 24 30Z" fill="#f0ede6"/>
+  <path d="M18 40 Q12 30 14 20 Q17 13 22 16 Q25 22 23 34Z" fill="#fafaf8"/>
+  <path d="M74 38 Q82 26 80 14 Q76 6 70 10 Q64 14 66 30Z" fill="#f0ede6"/>
+  <path d="M72 40 Q78 30 76 20 Q73 13 68 16 Q65 22 67 34Z" fill="#fafaf8"/>
+  <!-- pelo branco ao redor do focinho -->
+  <ellipse cx="45" cy="52" rx="16" ry="12" fill="#f5f3ee"/>
+  <!-- focinho achatado (Shih-tzu tem focinho bem curto) -->
+  <ellipse cx="45" cy="53" rx="13" ry="10" fill="#fff"/>
+  <ellipse cx="45" cy="51" rx="11" ry="7" fill="#f0ede6"/>
+  <!-- nariz pretinho bem característico -->
+  <ellipse cx="45" cy="46" rx="6" ry="4" fill="#1a1a1a"/>
+  <ellipse cx="45" cy="45" rx="5" ry="3" fill="#2d2d2d"/>
+  <!-- narinas -->
+  <ellipse cx="42" cy="47" rx="1.5" ry="1" fill="#111"/>
+  <ellipse cx="48" cy="47" rx="1.5" ry="1" fill="#111"/>
+  <!-- língua de fora (igual na foto!) rosa -->
+  <ellipse cx="45" cy="59" rx="7" ry="5" fill="#f472a8"/>
+  <ellipse cx="45" cy="57" rx="7" ry="4" fill="#f48ab8"/>
+  <path d="M38 57 Q45 64 52 57" fill="#f472a8"/>
+  <!-- olhos escuros expressivos -->
+  <circle cx="33" cy="42" r="6.5" fill="#fff"/>
+  <circle cx="57" cy="42" r="6.5" fill="#fff"/>
+  <circle cx="34" cy="42" r="4.5" fill="#1a0a00"/>
+  <circle cx="58" cy="42" r="4.5" fill="#1a0a00"/>
+  <!-- brilho nos olhos (fofo!) -->
+  <circle cx="35.5" cy="40" r="1.8" fill="#fff"/>
+  <circle cx="59.5" cy="40" r="1.8" fill="#fff"/>
+  <circle cx="36.5" cy="43" r="0.8" fill="#fff"/>
+  <circle cx="60.5" cy="43" r="0.8" fill="#fff"/>
+  <!-- bigodes brancos -->
+  <line x1="32" y1="51" x2="18" y2="48" stroke="#d0ccc4" stroke-width="0.9" stroke-linecap="round"/>
+  <line x1="32" y1="54" x2="17" y2="53" stroke="#d0ccc4" stroke-width="0.9" stroke-linecap="round"/>
+  <line x1="58" y1="51" x2="72" y2="48" stroke="#d0ccc4" stroke-width="0.9" stroke-linecap="round"/>
+  <line x1="58" y1="54" x2="73" y2="53" stroke="#d0ccc4" stroke-width="0.9" stroke-linecap="round"/>
+  <!-- gravata verde com bolinhas pretas (igual na foto!) -->
+  <path d="M41 70 L45 65 L49 70 L47 80 L45 82 L43 80 Z" fill="#7dc640"/>
+  <path d="M42 68 L45 64 L48 68" fill="#5aa820"/>
+  <circle cx="43" cy="73" r="1.5" fill="#1a1a1a"/>
+  <circle cx="47" cy="76" r="1.5" fill="#1a1a1a"/>
+  <circle cx="44" cy="79" r="1.2" fill="#1a1a1a"/>
+</svg></div>
+      <div class="pc-bar gaara"></div>
+      <div class="pc-info">
+        <div class="pc-name gaara">Gaara</div>
+        <div class="pc-detail">Shih-tzu · ♂ · Branco com creme</div>
+      </div>
+    </div>
+    <div class="profile-card">
+      <div class="pc-photo eren"  style="padding:4px 0 0"><svg width="90" height="100" viewBox="0 0 90 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- corpo preto -->
+  <ellipse cx="45" cy="82" rx="26" ry="16" fill="#1e1e1e"/>
+  <ellipse cx="45" cy="78" rx="28" ry="18" fill="#222"/>
+  <!-- patinhas -->
+  <ellipse cx="33" cy="94" rx="6" ry="4" fill="#2a2a2a"/>
+  <ellipse cx="57" cy="94" rx="6" ry="4" fill="#2a2a2a"/>
+  <!-- manchas brancas no peito/barriga (característico do Eren) -->
+  <ellipse cx="45" cy="80" rx="16" ry="10" fill="#e8e8e8"/>
+  <!-- pelo lateral preto -->
+  <path d="M17 58 Q8 68 12 82 Q18 90 28 88 Q22 76 20 63Z" fill="#1e1e1e"/>
+  <path d="M73 58 Q82 68 78 82 Q72 90 62 88 Q68 76 70 63Z" fill="#1e1e1e"/>
+  <!-- cabeça preta redonda -->
+  <ellipse cx="45" cy="44" rx="28" ry="26" fill="#1a1a1a"/>
+  <!-- topete pretíssimo bem volumoso (destaque do Eren) -->
+  <path d="M24 22 Q28 8 45 4 Q62 8 66 22 Q58 12 45 10 Q32 12 24 22Z" fill="#111"/>
+  <ellipse cx="45" cy="10" rx="14" ry="8" fill="#0d0d0d"/>
+  <ellipse cx="45" cy="7" rx="10" ry="6" fill="#1a1a1a"/>
+  <!-- orelhas pretas -->
+  <path d="M18 36 Q10 24 12 12 Q16 4 22 8 Q28 12 26 28Z" fill="#111"/>
+  <path d="M20 38 Q14 28 16 18 Q19 11 24 14 Q27 20 25 32Z" fill="#1e1e1e"/>
+  <path d="M72 36 Q80 24 78 12 Q74 4 68 8 Q62 12 64 28Z" fill="#111"/>
+  <path d="M70 38 Q76 28 74 18 Q71 11 66 14 Q63 20 65 32Z" fill="#1e1e1e"/>
+  <!-- mancha branca no rosto (bem característica — bigode branco do Eren) -->
+  <ellipse cx="45" cy="50" rx="15" ry="11" fill="#d8d8d8"/>
+  <ellipse cx="45" cy="52" rx="12" ry="9" fill="#e8e8e8"/>
+  <!-- focinho -->
+  <ellipse cx="45" cy="53" rx="11" ry="8" fill="#f0f0f0"/>
+  <!-- nariz preto -->
+  <ellipse cx="45" cy="46" rx="6" ry="4" fill="#0d0d0d"/>
+  <ellipse cx="45" cy="45" rx="5" ry="3" fill="#1a1a1a"/>
+  <ellipse cx="42" cy="47" rx="1.5" ry="1" fill="#333"/>
+  <ellipse cx="48" cy="47" rx="1.5" ry="1" fill="#333"/>
+  <!-- língua de fora rosa (igual na foto!) -->
+  <ellipse cx="45" cy="59" rx="7" ry="5" fill="#f472a8"/>
+  <ellipse cx="45" cy="57" rx="7" ry="4" fill="#f48ab8"/>
+  <path d="M38 57 Q45 64 52 57" fill="#f472a8"/>
+  <!-- olhos escuros com brilho -->
+  <circle cx="33" cy="40" r="6" fill="#fff"/>
+  <circle cx="57" cy="40" r="6" fill="#fff"/>
+  <circle cx="34" cy="40" r="4" fill="#0d0d0d"/>
+  <circle cx="58" cy="40" r="4" fill="#0d0d0d"/>
+  <circle cx="35.5" cy="38" r="1.6" fill="#fff"/>
+  <circle cx="59.5" cy="38" r="1.6" fill="#fff"/>
+  <!-- bigodes brancos -->
+  <line x1="33" y1="51" x2="19" y2="48" stroke="#bbb" stroke-width="0.9" stroke-linecap="round"/>
+  <line x1="33" y1="54" x2="18" y2="53" stroke="#bbb" stroke-width="0.9" stroke-linecap="round"/>
+  <line x1="57" y1="51" x2="71" y2="48" stroke="#bbb" stroke-width="0.9" stroke-linecap="round"/>
+  <line x1="57" y1="54" x2="72" y2="53" stroke="#bbb" stroke-width="0.9" stroke-linecap="round"/>
+  <!-- gravatinha preta com bolinhas brancas (igual na foto!) -->
+  <path d="M41 68 L45 63 L49 68 L47 78 L45 80 L43 78 Z" fill="#2a2a2a"/>
+  <path d="M42 66 L45 62 L48 66" fill="#111"/>
+  <circle cx="43" cy="71" r="1.5" fill="#e8e8e8"/>
+  <circle cx="47" cy="74" r="1.5" fill="#e8e8e8"/>
+  <circle cx="44" cy="77" r="1.2" fill="#e8e8e8"/>
+</svg></div>
+      <div class="pc-bar eren"></div>
+      <div class="pc-info">
+        <div class="pc-name eren">Eren</div>
+        <div class="pc-detail">Shih-tzu · ♂ · Preto com branco</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ALIMENTAÇÃO -->
+  <div class="sec-label">🍽️ Alimentação</div>
+  <div class="card">
+    <div class="card-head">
+      <span class="ch-icon">🍽️</span>
+      <div><div class="ch-title">Ração e Quantidades</div><div class="ch-sub">Atenção — cada um tem ração diferente</div></div>
+      <div class="ch-right"><button class="edit-section-btn" onclick="openFoodModal()">✏️ Editar</button></div>
+    </div>
+    <div class="card-body">
+      <div id="food-gaara-block"></div>
+      <div id="food-eren-block"></div>
+      <div class="alert warn">
+        <span class="alert-ico">⚠️</span>
+        <div>
+          <div class="alert-title">Tigelas separadas, sempre</div>
+          <div class="alert-body">Cada um tem sua tigela identificada. Nunca misture — as rações são diferentes e as quantidades também.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HORÁRIOS -->
+  <div class="sec-label">⏰ Rotina do Dia</div>
+  <div class="card">
+    <div class="card-head">
+      <span class="ch-icon">⏰</span>
+      <div><div class="ch-title">Horários e Tarefas</div><div class="ch-sub">Tente seguir os horários — eles são acostumados</div></div>
+      <div class="ch-right"><button class="edit-section-btn" onclick="openScheduleModal()">✏️ Editar</button></div>
+    </div>
+    <div class="card-body" id="schedule-body">
+      <!-- rendered by JS -->
+    </div>
+  </div>
+
+  <!-- CUIDADOS ESPECIAIS -->
+  <div class="sec-label">❤️ Cuidados Especiais</div>
+  <div class="card">
+    <div class="card-head">
+      <span class="ch-icon">❤️</span>
+      <div><div class="ch-title">O que cada um precisa</div><div class="ch-sub">Atenção especial do Gaara com os olhos</div></div>
+      <div class="ch-right"><button class="edit-section-btn" onclick="openCareModal()">✏️ Editar</button></div>
+    </div>
+    <div class="card-body" id="care-body">
+      <!-- rendered by JS -->
+    </div>
+  </div>
+
+  <!-- REMÉDIOS -->
+  <div class="sec-label">💊 Remédios</div>
+  <div class="card">
+    <div class="card-head">
+      <span class="ch-icon">💊</span>
+      <div><div class="ch-title">Medicamentos</div><div class="ch-sub">Se algum estiver em tratamento</div></div>
+    </div>
+    <div class="card-body" id="meds-body"></div>
+    <div class="add-row" onclick="openM('m-med')">
+      <span class="add-row-ico">＋</span>
+      <span class="add-row-lbl">Adicionar remédio</span>
+    </div>
+  </div>
+
+  <!-- REGRAS -->
+  <div class="sec-label">📌 Regras Importantes</div>
+  <div class="card">
+    <div class="card-head">
+      <span class="ch-icon">📌</span>
+      <div><div class="ch-title">Leia com Atenção</div><div class="ch-sub">Obrigado por cuidar deles 💛</div></div>
+      <div class="ch-right"><button class="edit-section-btn" onclick="openRulesModal()">✏️ Editar</button></div>
+    </div>
+    <div class="card-body" id="rules-body">
+      <!-- rendered by JS -->
+    </div>
+  </div>
+
+  <!-- EMERGÊNCIA -->
+  <div class="sec-label">🚨 Emergência</div>
+  <div class="card">
+    <div class="card-head">
+      <span class="ch-icon">🚨</span>
+      <div><div class="ch-title">Contatos e Sinais de Alerta</div><div class="ch-sub">Em caso de dúvida, nos ligue primeiro</div></div>
+    </div>
+    <div class="card-body" id="emergency-body">
+      <!-- rendered by JS -->
+    </div>
+    <div class="add-row" onclick="openM('m-vet')">
+      <span class="add-row-ico">✏️</span>
+      <span class="add-row-lbl">Editar contatos de emergência</span>
+    </div>
+  </div>
+
+  <!-- CHECKLIST DIÁRIO -->
+  <div class="sec-label">✅ Checklist Diário</div>
+  <div class="card">
+    <div class="card-head">
+      <span class="ch-icon">✅</span>
+      <div><div class="ch-title">Marque conforme for fazendo</div><div class="ch-sub">Resetar a cada novo dia</div></div>
+      <div class="ch-right">
+        <button onclick="resetChecks()" style="background:none;border:1px solid var(--border2);border-radius:7px;padding:5px 10px;font-size:11px;font-weight:700;color:var(--muted);cursor:pointer;font-family:inherit">↺ Novo dia</button>
+      </div>
+    </div>
+    <div class="card-body" id="checklist-body">
+      <!-- rendered by JS -->
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="sticky-footer">
+    <div class="sf-info">
+      <div class="sf-title">Gaara & Eren 🐾</div>
+      <div class="sf-sub">Obrigado por cuidar tão bem deles!</div>
+    </div>
+    <button class="sf-btn-sec" onclick="copyPage()">📤</button>
+    <button class="sf-btn" onclick="window.print()">🖨️ Imprimir</button>
+  </div>
+
+</div>
+
+<script>
+// ═══════════════════════════════════════════
+// STORAGE
+// ═══════════════════════════════════════════
+// Storage: usa localStorage (funciona em qualquer browser quando publicado)
+// Fallback em memória caso localStorage não esteja disponível
+let _mem = {};
+function sGet(k){
+  try{ return Promise.resolve(localStorage.getItem(k)); }
+  catch(e){ return Promise.resolve(_mem[k]||null); }
+}
+function sSet(k,v){
+  try{ localStorage.setItem(k,v); }
+  catch(e){ _mem[k]=v; }
+  return Promise.resolve();
+}
+
+// ═══════════════════════════════════════════
+// DATA
+// ═══════════════════════════════════════════
+let D = {
+  trip: { datas: '', dest: '', obs: '' },
+  meds: [],
+  checks: {},
+  vet: { nome:'', end:'', tel:'', nome24:'', tel24:'', donoTel:'' },
+  food: {
+    gaara: { racao:'Royal Canin Shih Tzu Adult', qtd:'3 colheres rasas', vezes:'2× ao dia', obs:'Não misturar com a ração do Eren' },
+    eren:  { racao:'Hills Science Diet Adulto Pequeno', qtd:'2 colheres e meia rasas', vezes:'2× ao dia', obs:'Come mais rápido — tigelas separadas sempre' }
+  },
+  schedule: [
+    { time:'07:00', title:'Trocar a água', note:'Água fresca nas tigelas dos dois — todos os dias', who:'both' },
+    { time:'08:00', title:'Primeira refeição', note:'Dar a ração conforme indicado acima. Cada um na sua tigela.', who:'both' },
+    { time:'09:00', title:'Limpeza dos olhos — Gaara', note:'Soro fisiológico + algodão. Ver instruções abaixo.', who:'gaara' },
+    { time:'11:00', title:'Passeio curto', note:'No corredor ou área interna do prédio. ⚠️ Não sair do estacionamento.', who:'both' },
+    { time:'14:00', title:'Brincadeira — Eren', note:'10 min jogando bolinha no corredor. Ele precisa gastar energia.', who:'eren' },
+    { time:'18:00', title:'Segunda refeição', note:'Mesmas quantidades da manhã. Sempre tigelas separadas.', who:'both' },
+    { time:'21:00', title:'Limpeza dos olhos — Gaara (noite)', note:'Segunda limpeza do dia. Não pular.', who:'gaara' },
+    { time:'22:00', title:'Última troca de água', note:'Garantir água fresca para a noite.', who:'both' },
+  ],
+  care: [
+    { pet:'gaara', icon:'👁️', title:'Limpeza dos olhos', priority:'high', desc:'IMPORTANTE: Limpar os olhos 2× ao dia (manhã e noite). Use soro fisiológico e algodão ou gaze. Limpe do canto interno para o externo. Use um algodão novo para cada olho. Se aparecer secreção amarela espessa ou olho inchado, nos avise imediatamente.' },
+    { pet:'gaara', icon:'🍽️', title:'Seletivo com comida', priority:'med', desc:'Às vezes o Gaara recusa a refeição. Se ele não comer, não force — retire a tigela e ofereça na próxima refeição. Se passar mais de 24h sem comer, nos avise.' },
+    { pet:'gaara', icon:'🪮', title:'Pelo perto dos olhos', priority:'med', desc:'Se o pelo estiver caindo nos olhos, pode prender com um clipe ou grampa. Isso evita irritação.' },
+    { pet:'eren',  icon:'⚡', title:'Muito agitado', priority:'low', desc:'Eren é animado e pode pular muito. Voz firme e calma é o suficiente — ele responde bem.' },
+    { pet:'eren',  icon:'🎾', title:'Precisa de atividade', priority:'med', desc:'Jogar bolinha no corredor por pelo menos 10 minutos por dia faz bem pro humor dele. A bolinha fica na caixa de brinquedos.' },
+    { pet:'eren',  icon:'💤', title:'Hora de dormir', priority:'low', desc:'Se ele ficar latindo à noite, chame pelo nome com calma. Normalmente basta uma vez.' },
+  ],
+  rules: [
+    { level:'red',   text:'NÃO sair com eles para fora do estacionamento ou do prédio — eles podem se assustar e fugir em ambiente aberto.' },
+    { level:'red',   text:'Sempre usar coleira e guia nos passeios — ficam penduradas no gancho perto da porta.' },
+    { level:'red',   text:'Não dar comida humana: sem cebola, alho, uva, chocolate, abacate ou alimentos temperados. São tóxicos para cães.' },
+    { level:'amber', text:'Não deixar a porta aberta sem supervisão — eles saem rápido e são curiosos.' },
+    { level:'amber', text:'Se um deles vomitar 1 ou 2 vezes pode ser normal. Se persistir, vier com sangue ou ele ficar mole — nos ligue imediatamente.' },
+    { level:'amber', text:'As camas ficam no quarto. Podem dormir com você ou sozinhos — do jeito que você preferir.' },
+    { level:'green', text:'Qualquer dúvida ou situação estranha, nos mande mensagem — estamos disponíveis a qualquer hora.' },
+  ]
+};
+
+// Static content now lives in D.schedule, D.care, D.rules
+
+function getChecklistBase() {
+  return [
+    { id:'w1', text:'Água trocada — manhã', who:'both' },
+    { id:'f1', text:'Ração do Gaara — manhã (' + D.food.gaara.qtd + ')', who:'gaara' },
+    { id:'f2', text:'Ração do Eren — manhã (' + D.food.eren.qtd + ')', who:'eren' },
+    { id:'e1', text:'Olhos do Gaara limpos — manhã', who:'gaara' },
+    { id:'p1', text:'Passeio curto (corredor/área interna)', who:'both' },
+    { id:'b1', text:'Brincadeira com Eren (10 min)', who:'eren' },
+    { id:'f3', text:'Ração do Gaara — noite (' + D.food.gaara.qtd + ')', who:'gaara' },
+    { id:'f4', text:'Ração do Eren — noite (' + D.food.eren.qtd + ')', who:'eren' },
+    { id:'e2', text:'Olhos do Gaara limpos — noite', who:'gaara' },
+    { id:'w2', text:'Água trocada — noite', who:'both' },
+  ];
+}
+
+// ═══════════════════════════════════════════
+// RENDER
+// ═══════════════════════════════════════════
+function renderAll() {
+  renderFood();
+  renderSchedule();
+  renderCare();
+  renderMeds();
+  renderRules();
+  renderEmergency();
+  renderChecklist();
+  renderTrip();
+}
+
+function renderFood() {
+  function block(key) {
+    var el = document.getElementById('food-' + key + '-block');
+    if (!el) return;
+    var f = D.food[key];
+    var name = key === 'gaara' ? 'Gaara' : 'Eren';
+    el.innerHTML =
+      '<div class="food-block ' + key + '">' +
+        '<div class="fb-name ' + key + '">' + (key==='gaara' ? '🤍' : '🖤') + ' ' + name + '</div>' +
+        '<div class="fb-row"><span class="fb-lbl">Ração</span><span class="fb-val">' + f.racao + '</span></div>' +
+        '<div class="fb-row"><span class="fb-lbl">Quantidade</span><span class="fb-val">' + f.qtd + '</span></div>' +
+        '<div class="fb-row"><span class="fb-lbl">Vezes por dia</span><span class="fb-val">' + f.vezes + '</span></div>' +
+        '<div class="fb-row"><span class="fb-lbl">Obs</span><span class="fb-val" style="font-size:12px">' + f.obs + '</span></div>' +
+      '</div>';
+  }
+  block('gaara'); block('eren');
+}
+
+function renderSchedule() {
+  const el = document.getElementById('schedule-body');
+  if (!el) return;
+  el.innerHTML = D.schedule.map(function(s) {
+    const tagHtml =
+      (s.who === 'both' ? '<span class="tag tag-gaara">Gaara</span><span class="tag tag-eren">Eren</span>' :
+       s.who === 'gaara' ? '<span class="tag tag-gaara">Gaara</span>' :
+       '<span class="tag tag-eren">Eren</span>');
+    return '<div class="sched-row">' +
+      '<div class="sched-time">' + s.time + '</div>' +
+      '<div class="sched-body">' +
+        '<div class="sched-title">' + s.title + '</div>' +
+        '<div class="sched-note">' + s.note + '</div>' +
+        '<div class="sched-tags">' + tagHtml + '</div>' +
+      '</div>' +
+    '</div>';
+  }).join('');
+}
+
+function renderCare() {
+  const el = document.getElementById('care-body');
+  if (!el) return;
+
+  const eyeInstructions = '<div class="alert ok" style="margin-bottom:0">' +
+    '<span class="alert-ico">💧</span>' +
+    '<div><div class="alert-title">Como limpar os olhos do Gaara</div>' +
+    '<div class="alert-body">' +
+      '1. Pegue o soro fisiológico e abra<br>' +
+      '2. Embeba o algodão ou gaze<br>' +
+      '3. Passe do canto interno → externo do olho<br>' +
+      '4. Use algodão novo para cada olho<br>' +
+      '5. Faça isso <b>manhã e noite</b>, todo dia' +
+    '</div></div></div>';
+
+  el.innerHTML = D.care.map(function(c) {
+    const wrapColor = c.pet === 'gaara' ? 'ciw-gaara' : c.pet === 'eren' ? 'ciw-eren' : 'ciw-both';
+    const prioClass = c.priority === 'high' ? 'cp-high' : c.priority === 'med' ? 'cp-med' : 'cp-low';
+    const prioLabel = c.priority === 'high' ? 'Importante' : c.priority === 'med' ? 'Atenção' : 'Info';
+    return '<div class="care-item">' +
+      '<div class="care-ico-wrap ' + wrapColor + '">' + c.icon + '</div>' +
+      '<div class="care-content">' +
+        '<div class="care-title">' + c.title + ' <span class="tag ' + (c.pet === 'gaara' ? 'tag-gaara' : 'tag-eren') + '">' + (c.pet === 'gaara' ? 'Gaara' : 'Eren') + '</span></div>' +
+        '<div class="care-desc">' + c.desc + '</div>' +
+      '</div>' +
+      '<span class="care-priority ' + prioClass + '">' + prioLabel + '</span>' +
+    '</div>';
+  }).join('') + eyeInstructions;
+}
+
+function renderMeds() {
+  const el = document.getElementById('meds-body');
+  if (!el) return;
+  if (!D.meds.length) {
+    el.innerHTML = '<div class="no-meds">Nenhum medicamento no momento 🎉<br><small>Adicione se algum estiver em tratamento</small></div>';
+    return;
+  }
+  el.innerHTML = D.meds.map(function(m, i) {
+    const petName = m.pet === 'gaara' ? 'Gaara' : 'Eren';
+    const petDot = m.pet === 'gaara' ? '🟠' : '🔵';
+    return '<div class="med-card">' +
+      '<div class="med-head">' +
+        '<span style="font-size:18px">' + petDot + '</span>' +
+        '<span class="med-pet-name">' + petName + ' — ' + m.nome + '</span>' +
+        '<span class="med-badge">Ativo</span>' +
+        '<button class="med-del" data-idx="' + i + '" onclick="delMed(this.dataset.idx)">×</button>' +
+      '</div>' +
+      '<div class="med-row"><span class="med-lbl">Dose</span><span class="med-val">' + (m.dose || '—') + '</span></div>' +
+      '<div class="med-row"><span class="med-lbl">Horário</span><span class="med-val">' + (m.hora || '—') + '</span></div>' +
+      '<div class="med-row"><span class="med-lbl">Como dar</span><span class="med-val">' + (m.como || '—') + '</span></div>' +
+      '<div class="med-row"><span class="med-lbl">Até quando</span><span class="med-val">' + (m.ate || '—') + '</span></div>' +
+      (m.obs ? '<div class="med-row"><span class="med-lbl">Obs</span><span class="med-val" style="font-size:12px">' + m.obs + '</span></div>' : '') +
+    '</div>';
+  }).join('');
+}
+
+function renderRules() {
+  const el = document.getElementById('rules-body');
+  if (!el) return;
+  const colorMap = { red: 'rn-red', amber: 'rn-amber', green: 'rn-green' };
+  el.innerHTML = D.rules.map(function(r, i) {
+    return '<div class="rule-row">' +
+      '<div class="rule-num ' + colorMap[r.level] + '">' + (i + 1) + '</div>' +
+      '<div class="rule-text">' + r.text + '</div>' +
+    '</div>';
+  }).join('');
+}
+
+function renderEmergency() {
+  const el = document.getElementById('emergency-body');
+  if (!el) return;
+  const vet = D.vet;
+
+  const signals = '<div class="alert danger">' +
+    '<span class="alert-ico">🚨</span>' +
+    '<div><div class="alert-title">Leve imediatamente ao veterinário se:</div>' +
+    '<div class="alert-body">• Dificuldade para respirar<br>• Vômito com sangue ou persistente<br>• Convulsão ou tremores<br>• Não consegue andar ou fica prostrado<br>• Barriga muito distendida<br>• Não responde ao chamado</div></div>' +
+  '</div>';
+
+  const vetTel   = vet.tel    ? vet.tel.replace(/\D/g,'')    : '';
+  const vet24Tel = vet.tel24  ? vet.tel24.replace(/\D/g,'')  : '';
+  const donoNum  = vet.donoTel? vet.donoTel.replace(/\D/g,''): '';
+
+  const vetCard = '<div class="contact-card">' +
+    '<div class="cc-ico">🏥</div>' +
+    '<div>' +
+      '<div class="cc-name">' + (vet.nome || 'Clínica Veterinária') + '</div>' +
+      '<div class="cc-detail">' + (vet.end || 'Adicione o endereço em Editar contatos') + (vet.tel ? '<br>📞 ' + vet.tel : '') + '</div>' +
+    '</div>' +
+    (vetTel ? '<button class="cc-call" data-href="tel:' + vetTel + '" onclick="window.open(this.dataset.href)">📞 Ligar</button>' : '') +
+  '</div>';
+
+  const vet24Card = '<div class="contact-card">' +
+    '<div class="cc-ico">🌙</div>' +
+    '<div>' +
+      '<div class="cc-name">' + (vet.nome24 || 'Plantão Veterinário 24h') + '</div>' +
+      '<div class="cc-detail">' + (vet.tel24 || 'Adicione clínica 24h em Editar contatos') + '</div>' +
+    '</div>' +
+    (vet24Tel ? '<button class="cc-call" data-href="tel:' + vet24Tel + '" onclick="window.open(this.dataset.href)">📞 Ligar</button>' : '') +
+  '</div>';
+
+  const ownerCard = '<div class="contact-card">' +
+    '<div class="cc-ico">💛</div>' +
+    '<div>' +
+      '<div class="cc-name">Gabriel & Ingridy</div>' +
+      '<div class="cc-detail">Podem ligar a qualquer hora!<br>' + (vet.donoTel ? '📱 ' + vet.donoTel : 'Adicione o número em Editar contatos') + '</div>' +
+    '</div>' +
+    (donoNum ? '<button class="cc-call wpp" data-href="https://wa.me/' + donoNum + '" onclick="window.open(this.dataset.href)">💬 WhatsApp</button>' : '') +
+  '</div>';
+
+  el.innerHTML = signals + vetCard + vet24Card + ownerCard;
+}
+
+function renderChecklist() {
+  const el = document.getElementById('checklist-body');
+  if (!el) return;
+  const items = getChecklistBase().concat(
+    D.meds.map(function(m, i) {
+      return { id: 'med_' + i, text: '💊 ' + (m.pet === 'gaara' ? 'Gaara' : 'Eren') + ': ' + m.nome + ' — ' + m.hora, who: m.pet };
+    })
+  );
+  el.innerHTML = items.map(function(item) {
+    const done = !!D.checks[item.id];
+    const tagClass = item.who === 'gaara' ? 'tag-gaara' : item.who === 'eren' ? 'tag-eren' : 'tag-both';
+    const tagLabel = item.who === 'gaara' ? 'Gaara' : item.who === 'eren' ? 'Eren' : 'Ambos';
+    return '<div class="chk-row' + (done ? ' on' : '') + '" data-id="' + item.id + '" onclick="toggleCheck(this)">' +
+      '<div class="chk-box"><span class="chk-tick">✓</span></div>' +
+      '<span class="chk-text">' + item.text + '</span>' +
+      '<span class="chk-who tag ' + tagClass + '">' + tagLabel + '</span>' +
+    '</div>';
+  }).join('');
+}
+
+function renderTrip() {
+  const el = document.getElementById('trip-label');
+  if (!el) return;
+  if (D.trip.datas) {
+    el.textContent = D.trip.datas + (D.trip.dest ? ' · ' + D.trip.dest : '');
+  } else {
+    el.textContent = 'Toque para informar as datas';
+  }
+}
+
+// ═══════════════════════════════════════════
+// ACTIONS
+// ═══════════════════════════════════════════
+function toggleCheck(row) {
+  const id = row.dataset.id;
+  row.classList.toggle('on');
+  D.checks[id] = row.classList.contains('on');
+  sSet('petcare', JSON.stringify(D));
+}
+
+function resetChecks() {
+  D.checks = {};
+  sSet('petcare', JSON.stringify(D));
+  renderChecklist();
+  showToast('✅ Checklist reiniciado para novo dia!');
+}
+
+function openM(id) { document.getElementById(id).classList.add('open'); }
+function closeM(id) { document.getElementById(id).classList.remove('open'); }
+document.querySelectorAll('.modal-bg').forEach(function(m) {
+  m.addEventListener('click', function(e) { if (e.target === m) m.classList.remove('open'); });
+});
+
+function saveMed() {
+  const nome = document.getElementById('med-nome').value.trim();
+  if (!nome) { showToast('⚠️ Informe o nome do remédio'); return; }
+  D.meds.push({
+    pet:  document.getElementById('med-pet').value,
+    nome: nome,
+    dose: document.getElementById('med-dose').value.trim(),
+    hora: document.getElementById('med-hora').value.trim(),
+    como: document.getElementById('med-como').value.trim(),
+    ate:  document.getElementById('med-ate').value.trim(),
+    obs:  document.getElementById('med-obs').value.trim(),
+  });
+  sSet('petcare', JSON.stringify(D));
+  closeM('m-med');
+  renderMeds(); renderChecklist();
+  showToast('💊 Remédio salvo!');
+  ['med-nome','med-dose','med-hora','med-como','med-ate','med-obs'].forEach(function(id) {
+    document.getElementById(id).value = '';
+  });
+}
+
+function delMed(i) {
+  D.meds.splice(parseInt(i), 1);
+  sSet('petcare', JSON.stringify(D));
+  renderMeds(); renderChecklist();
+  showToast('🗑️ Removido');
+}
+
+function saveVet() {
+  D.vet.nome     = document.getElementById('vet-nome').value.trim();
+  D.vet.end      = document.getElementById('vet-end').value.trim();
+  D.vet.tel      = document.getElementById('vet-tel').value.trim();
+  D.vet.nome24   = document.getElementById('vet24-nome').value.trim();
+  D.vet.tel24    = document.getElementById('vet24-tel').value.trim();
+  D.vet.donoTel  = document.getElementById('dono-tel').value.trim();
+  sSet('petcare', JSON.stringify(D));
+  closeM('m-vet'); renderEmergency();
+  showToast('✅ Contatos salvos!');
+}
+
+function saveTrip() {
+  D.trip.datas = document.getElementById('trip-datas').value.trim();
+  D.trip.dest  = document.getElementById('trip-dest').value.trim();
+  D.trip.obs   = document.getElementById('trip-obs').value.trim();
+  sSet('petcare', JSON.stringify(D));
+  closeM('m-trip'); renderTrip();
+  showToast('✈️ Informações da viagem salvas!');
+}
+
+function copyPage() {
+  navigator.clipboard.writeText(document.title + ' — ' + window.location.href).catch(function(){});
+  showToast('📤 Link copiado!');
+}
+
+// ═══════════════════════════════════════════
+// TOAST
+// ═══════════════════════════════════════════
+var _tt;
+function showToast(msg) {
+  var t = document.getElementById('toast');
+  t.textContent = msg; t.classList.add('show');
+  clearTimeout(_tt); _tt = setTimeout(function(){ t.classList.remove('show'); }, 2600);
+}
+
+// ═══════════════════════════════════════════
+// INIT
+// ═══════════════════════════════════════════
+// ═══ FOOD EDIT ═══
+function openFoodModal() {
+  document.getElementById('fg-racao').value = D.food.gaara.racao;
+  document.getElementById('fg-qtd').value   = D.food.gaara.qtd;
+  document.getElementById('fg-vezes').value = D.food.gaara.vezes;
+  document.getElementById('fg-obs').value   = D.food.gaara.obs;
+  document.getElementById('fe-racao').value = D.food.eren.racao;
+  document.getElementById('fe-qtd').value   = D.food.eren.qtd;
+  document.getElementById('fe-vezes').value = D.food.eren.vezes;
+  document.getElementById('fe-obs').value   = D.food.eren.obs;
+  openM('m-food');
+}
+function saveFood() {
+  D.food.gaara.racao = document.getElementById('fg-racao').value.trim() || D.food.gaara.racao;
+  D.food.gaara.qtd   = document.getElementById('fg-qtd').value.trim()   || D.food.gaara.qtd;
+  D.food.gaara.vezes = document.getElementById('fg-vezes').value.trim() || D.food.gaara.vezes;
+  D.food.gaara.obs   = document.getElementById('fg-obs').value.trim();
+  D.food.eren.racao  = document.getElementById('fe-racao').value.trim() || D.food.eren.racao;
+  D.food.eren.qtd    = document.getElementById('fe-qtd').value.trim()   || D.food.eren.qtd;
+  D.food.eren.vezes  = document.getElementById('fe-vezes').value.trim() || D.food.eren.vezes;
+  D.food.eren.obs    = document.getElementById('fe-obs').value.trim();
+  sSet('petcare', JSON.stringify(D));
+  closeM('m-food'); renderFood(); renderChecklist();
+  showToast('✅ Alimentação atualizada!');
+}
+
+// ═══ SCHEDULE EDIT ═══
+function openScheduleModal() {
+  var el = document.getElementById('schedule-edit-list');
+  if (!el) return;
+  el.innerHTML = D.schedule.map(function(s, i) {
+    var whoColor = s.who === 'gaara' ? 'var(--gaara)' : s.who === 'eren' ? 'var(--eren)' : 'var(--muted)';
+    return '<div style="display:flex;align-items:center;gap:8px;padding:8px 0;border-bottom:1px solid var(--cream2)">' +
+      '<span style="font-size:12px;font-weight:800;color:' + whoColor + ';min-width:46px">' + s.time + '</span>' +
+      '<span style="flex:1;font-size:12px;font-weight:600;color:var(--ink)">' + s.title + '</span>' +
+      '<button data-idx="' + i + '" onclick="delScheduleItem(this.dataset.idx)" style="background:none;border:1px solid var(--border2);border-radius:6px;padding:3px 8px;font-size:11px;color:var(--red);cursor:pointer;font-family:inherit;flex-shrink:0">Remover</button>' +
+    '</div>';
+  }).join('');
+  openM('m-schedule');
+}
+function delScheduleItem(i) {
+  D.schedule.splice(parseInt(i), 1);
+  sSet('petcare', JSON.stringify(D));
+  renderSchedule(); openScheduleModal();
+  showToast('🗑️ Horário removido');
+}
+function addScheduleItem() {
+  var time  = document.getElementById('ns-time').value.trim();
+  var title = document.getElementById('ns-title').value.trim();
+  if (!time || !title) { showToast('⚠️ Preencha horário e título'); return; }
+  var item = {
+    time: time, title: title,
+    note: document.getElementById('ns-note').value.trim(),
+    who:  document.getElementById('ns-who').value,
+  };
+  D.schedule.push(item);
+  D.schedule.sort(function(a,b){ return a.time.localeCompare(b.time); });
+  sSet('petcare', JSON.stringify(D));
+  document.getElementById('ns-time').value = '';
+  document.getElementById('ns-title').value = '';
+  document.getElementById('ns-note').value = '';
+  renderSchedule(); openScheduleModal();
+  showToast('✅ Horário adicionado!');
+}
+
+// ═══ CARE EDIT ═══
+function openCareModal() {
+  var el = document.getElementById('care-edit-list');
+  if (!el) return;
+  el.innerHTML = D.care.map(function(item, i) {
+    var color = item.pet === 'gaara' ? 'var(--gaara)' : 'var(--eren)';
+    return '<div style="display:flex;align-items:center;gap:8px;padding:8px 0;border-bottom:1px solid var(--cream2)">' +
+      '<span style="font-size:16px">' + item.icon + '</span>' +
+      '<div style="flex:1;min-width:0">' +
+        '<div style="font-size:12px;font-weight:700;color:' + color + '">' + (item.pet === 'gaara' ? 'Gaara' : 'Eren') + '</div>' +
+        '<div style="font-size:12px;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">' + item.title + '</div>' +
+      '</div>' +
+      '<button data-idx="' + i + '" onclick="delCareItem(this.dataset.idx)" style="background:none;border:1px solid var(--border2);border-radius:6px;padding:3px 8px;font-size:11px;color:var(--red);cursor:pointer;font-family:inherit;flex-shrink:0">Remover</button>' +
+    '</div>';
+  }).join('');
+  openM('m-care');
+}
+function delCareItem(i) {
+  D.care.splice(parseInt(i), 1);
+  sSet('petcare', JSON.stringify(D));
+  renderCare(); openCareModal();
+  showToast('🗑️ Cuidado removido');
+}
+function addCareItem() {
+  var title = document.getElementById('nc-title').value.trim();
+  var desc  = document.getElementById('nc-desc').value.trim();
+  if (!title) { showToast('⚠️ Informe o título'); return; }
+  D.care.push({
+    pet: document.getElementById('nc-pet').value,
+    icon: document.getElementById('nc-icon').value.trim() || '📌',
+    title: title, desc: desc || '',
+    priority: document.getElementById('nc-priority').value,
+  });
+  sSet('petcare', JSON.stringify(D));
+  document.getElementById('nc-title').value = '';
+  document.getElementById('nc-desc').value = '';
+  document.getElementById('nc-icon').value = '';
+  renderCare(); openCareModal();
+  showToast('✅ Cuidado adicionado!');
+}
+
+// ═══ RULES EDIT ═══
+function openRulesModal() {
+  var el = document.getElementById('rules-edit-list');
+  if (!el) return;
+  var colorMap = { red:'var(--red)', amber:'var(--amber)', green:'var(--green)' };
+  el.innerHTML = D.rules.map(function(r, i) {
+    return '<div style="display:flex;align-items:flex-start;gap:8px;padding:8px 0;border-bottom:1px solid var(--cream2)">' +
+      '<div style="width:16px;height:16px;border-radius:50%;background:' + colorMap[r.level] + ';flex-shrink:0;margin-top:2px"></div>' +
+      '<div style="flex:1;font-size:12px;color:var(--ink2);line-height:1.5">' + r.text + '</div>' +
+      '<button data-idx="' + i + '" onclick="delRuleItem(this.dataset.idx)" style="background:none;border:1px solid var(--border2);border-radius:6px;padding:3px 8px;font-size:11px;color:var(--red);cursor:pointer;font-family:inherit;flex-shrink:0">×</button>' +
+    '</div>';
+  }).join('');
+  openM('m-rules');
+}
+function delRuleItem(i) {
+  D.rules.splice(parseInt(i), 1);
+  sSet('petcare', JSON.stringify(D));
+  renderRules(); openRulesModal();
+  showToast('🗑️ Regra removida');
+}
+function addRuleItem() {
+  var text = document.getElementById('nr-text').value.trim();
+  if (!text) { showToast('⚠️ Informe o texto da regra'); return; }
+  D.rules.push({ level: document.getElementById('nr-level').value, text: text });
+  sSet('petcare', JSON.stringify(D));
+  document.getElementById('nr-text').value = '';
+  renderRules(); openRulesModal();
+  showToast('✅ Regra adicionada!');
+}
+
+window.onload = async function() {
+  try {
+    var saved = await sGet('petcare');
+    if (saved) {
+      var parsed = JSON.parse(saved);
+      D.trip     = parsed.trip     || D.trip;
+      D.meds     = parsed.meds     || D.meds;
+      D.checks   = parsed.checks   || D.checks;
+      D.vet      = parsed.vet      || D.vet;
+      D.food     = parsed.food     || D.food;
+      D.schedule = parsed.schedule || D.schedule;
+      D.care     = parsed.care     || D.care;
+      D.rules    = parsed.rules    || D.rules;
+    }
+  } catch(e) {}
+  renderAll();
+};
+</script>
+</body>
+</html>
